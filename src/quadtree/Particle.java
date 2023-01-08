@@ -1,5 +1,6 @@
 package quadtree;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Random;
 
@@ -12,7 +13,7 @@ public class Particle {
 	public Particle(int _bound) {
 
 		this.bound = _bound;
-		this.size = 5;
+		this.size = 8;
 		
 		this.x = random.nextInt(bound - this.size);
 		this.y = random.nextInt(bound - this.size);
@@ -31,6 +32,11 @@ public class Particle {
 		
 		if(this.y + this.size >= bound || this.y <= 0) 
 			this.speedY *= -1;
+	}
+	
+	public void Draw(Graphics graphics) {
+		graphics.setColor(Color.black);
+		graphics.fillOval(this.x, this.y, this.size, this.size);
 	}
 	
 }

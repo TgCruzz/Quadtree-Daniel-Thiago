@@ -7,19 +7,29 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class Main {	
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		ArrayList<Particle> particles = new ArrayList();
-		int totalParticles = 500;
+	ArrayList<Particle> particles;
+	int totalParticles, screenSize;
+	Quadtree quad;
+	
+	public Main() {
+
+		screenSize = 1000;
+		totalParticles = 50;
+		
+		particles = new ArrayList();
+						
 		
 		for(int i = 0; i < totalParticles; i++) {
-			particles.add(new Particle(1000));
+			particles.add(new Particle(screenSize));
 		}
 		
-		Screen screen = new Screen(particles);		
+		quad = new Quadtree(new Zone( 0, 0, screenSize), particles);
+		
+		Screen screen = new Screen(particles, quad);		
 		JFrame frame = new JFrame("Tela");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.add(screen);
@@ -29,13 +39,20 @@ public class Main {
 		
 		while(true) {
 			for (Particle p : particles)
-				p.Move();
+				p.Move();						
 			
 			frame.invalidate();
 			frame.validate();
 			frame.repaint();
 		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Main();
 		
 	}			
+	
+	
 
 }

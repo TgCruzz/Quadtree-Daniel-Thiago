@@ -37,9 +37,11 @@ public class Main {
 		frame.pack();
 		frame.setVisible(true);
 		
-		while(true) {
-			for (Particle p : particles)
-				p.Move();						
+		while(true) {	
+			for(Particle p : particles)
+			p.Move();
+
+			quad.Update();
 			
 			frame.invalidate();
 			frame.validate();

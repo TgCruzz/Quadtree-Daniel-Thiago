@@ -27,12 +27,11 @@ public class Screen extends JPanel {
 	public void paintComponent(Graphics graphics) {
 		super.paintComponents(graphics);
 		
-		for(Particle p : particles){
+		for(Particle p : particles)
 			p.Draw(graphics);
-		}
-		
+							
 		quad.Draw(graphics);
-								
+		
 	}
 	
 }

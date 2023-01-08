@@ -29,6 +29,7 @@ public class Quadtree {
 		
 		if (this.assignedParticles.size() > max)						
 			this.Split();
+		
 	}
 	
 	public void Assign (){	
@@ -51,6 +52,13 @@ public class Quadtree {
 		this.SE = new Quadtree(new Zone(this.zone.x + this.zone.size/2, this.zone.y + this.zone.size/2, this.zone.size/2),
 				this.assignedParticles);
 		this.isSplit = true;
+	}
+	
+	public void Update() {
+		
+		if (this.assignedParticles.size() > max)						
+			this.Split();
+		
 	}
 	
 	public void Draw(Graphics graphics) {
